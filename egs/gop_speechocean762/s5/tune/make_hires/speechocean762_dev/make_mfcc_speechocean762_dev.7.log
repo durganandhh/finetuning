@@ -1,0 +1,36 @@
+# compute-mfcc-feats --write-utt2dur=ark,t:tune/make_hires/speechocean762_dev/utt2dur.7 --verbose=2 --config=conf/mfcc_hires.conf scp,p:tune/make_hires/speechocean762_dev/wav_speechocean762_dev.7.scp ark:- | copy-feats --write-num-frames=ark,t:tune/make_hires/speechocean762_dev/utt2num_frames.7 --compress=true ark:- ark,scp:/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/raw_mfcc_speechocean762_dev.7.ark,/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/raw_mfcc_speechocean762_dev.7.scp 
+# Started at Thu Oct 23 10:36:04 IST 2025
+#
+copy-feats --write-num-frames=ark,t:tune/make_hires/speechocean762_dev/utt2num_frames.7 --compress=true ark:- ark,scp:/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/raw_mfcc_speechocean762_dev.7.ark,/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/raw_mfcc_speechocean762_dev.7.scp 
+compute-mfcc-feats --write-utt2dur=ark,t:tune/make_hires/speechocean762_dev/utt2dur.7 --verbose=2 --config=conf/mfcc_hires.conf scp,p:tune/make_hires/speechocean762_dev/wav_speechocean762_dev.7.scp ark:- 
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 030490010
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 030490055
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 030680054
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 030830069
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 030880015
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 032080088
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 032080110
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 036360154
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 038370060
+LOG (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:181) Processed 10 utterances
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 038370128
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 040050142
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 040050183
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 040050306
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 051950050
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 052180027
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 052180112
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 052180160
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054010061
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054010079
+LOG (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:181) Processed 20 utterances
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054080035
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054140003
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054140019
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054140127
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054180077
+VLOG[2] (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:182) Processed features for key 054180130
+LOG (compute-mfcc-feats[5.5.1182~1-e02e3]:main():compute-mfcc-feats.cc:185)  Done 25 out of 25 utterances.
+LOG (copy-feats[5.5.1182~1-e02e3]:main():copy-feats.cc:143) Copied 25 feature matrices.
+# Accounting: time=0 threads=1
+# Ended (code 0) at Thu Oct 23 10:36:05 IST 2025, elapsed time 0 seconds

@@ -1,0 +1,2 @@
+compute-cmvn-stats --spk2utt=ark:data/speechocean762_dev/spk2utt scp:data/speechocean762_dev/feats.scp ark,scp:/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/cmvn_speechocean762_dev.ark,/home/mcw/durga/kaldi/egs/gop_speechocean762/s5/mfcc/cmvn_speechocean762_dev.scp 
+LOG (compute-cmvn-stats[5.5.1182~1-e02e3]:main():compute-cmvn-stats.cc:171) Done accumulating CMVN stats for 250 utterances; 0 had errors.

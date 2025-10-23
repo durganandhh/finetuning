@@ -1,0 +1,19 @@
+# compile-train-graphs --read-disambig-syms=/home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/phones/disambig.int --transition-scale=1.0 --self-loop-scale=1.0 tune/align_lats_speechocean762/tree /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_chain/exp/chain_cleaned/tdnn_1d_sp/final.mdl /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/L.fst "ark:utils/sym2int.pl --map-oov 3 -f 2- /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/words.txt data/speechocean762_train/split10/3/text|" "ark:|gzip -c >tune/align_lats_speechocean762/fsts.3.gz" 
+# Started at Thu Oct 23 10:36:12 IST 2025
+#
+compile-train-graphs --read-disambig-syms=/home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/phones/disambig.int --transition-scale=1.0 --self-loop-scale=1.0 tune/align_lats_speechocean762/tree /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_chain/exp/chain_cleaned/tdnn_1d_sp/final.mdl /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/L.fst 'ark:utils/sym2int.pl --map-oov 3 -f 2- /home/mcw/durga/kaldi/libreespeech2/0013_librispeech_v1_lm/data/lang_test_tgsmall/words.txt data/speechocean762_train/split10/3/text|' 'ark:|gzip -c >tune/align_lats_speechocean762/fsts.3.gz' 
+sym2int.pl: replacing VIEWINGS with 3
+sym2int.pl: replacing ALISA with 3
+sym2int.pl: replacing LYNDA with 3
+sym2int.pl: replacing LYNDA with 3
+sym2int.pl: replacing LAYLA'S with 3
+sym2int.pl: replacing LOWEN with 3
+sym2int.pl: replacing LAYLA with 3
+sym2int.pl: replacing LYNDA with 3
+sym2int.pl: replacing LYNDA with 3
+sym2int.pl: replacing LYNDA with 3
+sym2int.pl: replacing LOWEN with 3
+** Replaced 11 instances of OOVs with 3
+LOG (compile-train-graphs[5.5.1182~1-e02e3]:main():compile-train-graphs.cc:147) compile-train-graphs: succeeded for 233 graphs, failed for 0
+# Accounting: time=3 threads=1
+# Ended (code 0) at Thu Oct 23 10:36:15 IST 2025, elapsed time 3 seconds

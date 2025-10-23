@@ -1,0 +1,7 @@
+# lattice-copy "--include=cat tune/chain_finetune/tdnn_1d_sp_adapt/egs/valid_uttlist tune/chain_finetune/tdnn_1d_sp_adapt/egs/train_subset_uttlist |" --ignore-missing "ark:gunzip -c tune/align_lats_speechocean762/lat.3.gz |" ark,scp:tune/chain_finetune/tdnn_1d_sp_adapt/egs/lat_special.3.ark,tune/chain_finetune/tdnn_1d_sp_adapt/egs/lat_special.3.scp 
+# Started at Thu Oct 23 10:38:39 IST 2025
+#
+lattice-copy '--include=cat tune/chain_finetune/tdnn_1d_sp_adapt/egs/valid_uttlist tune/chain_finetune/tdnn_1d_sp_adapt/egs/train_subset_uttlist |' --ignore-missing 'ark:gunzip -c tune/align_lats_speechocean762/lat.3.gz |' ark,scp:tune/chain_finetune/tdnn_1d_sp_adapt/egs/lat_special.3.ark,tune/chain_finetune/tdnn_1d_sp_adapt/egs/lat_special.3.scp 
+LOG (lattice-copy[5.5.1182~1-e02e3]:CopySubsetLattices():lattice-copy.cc:122)  Wrote 71 out of 233 utterances.
+# Accounting: time=0 threads=1
+# Ended (code 0) at Thu Oct 23 10:38:39 IST 2025, elapsed time 0 seconds
