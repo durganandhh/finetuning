@@ -11,10 +11,25 @@ import pickle
 import kaldi_io
 import numpy as np
 from concurrent.futures import ProcessPoolExecutor
+import difflib
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from utils import load_phone_symbol_table, load_human_scores, balanced_sampling
 
+def align_sequences(gop_seq, human_seq):
+    matcher = difflib.SequenceMatcher(None, gop_seq, human_seq)
+    alignment = []
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == 'equal' or tag == 'replace':
+            for i, j in zip(range(i1, i2), range(j1, j2)):
+                alignment.append((i, j))
+        elif tag == 'delete':
+            for i in range(i1, i2):
+                alignment.append((i, None))
+        elif tag == 'insert':
+            for j in range(j1, j2):
+                alignment.append((None, j))
+    return alignment
 
 def get_args():
     parser = argparse.ArgumentParser(
@@ -56,17 +71,55 @@ def main():
 
     # Prepare training data
     train_data_of = {}
-    for key, gops in kaldi_io.read_post_scp(args.gop_scp):
-        for i, [(ph, gop)] in enumerate(gops):
-            ph_key = f'{key}.{i}'
+    # for key, gops in kaldi_io.read_post_scp(args.gop_scp):
+    #     for i, [(ph, gop)] in enumerate(gops):
+    #         ph_key = f'{key}.{i}'
+    #         if ph_key not in score_of:
+    #             print(f'Warning: no human score for {ph_key}')
+    #             continue
+    #         if phone_int2sym is not None and phone_int2sym[ph] != phone_of[ph_key]:
+    #             print(f'Unmatch: {phone_int2sym[ph]} <--> {phone_of[ph_key]} ')
+    #             continue
+    #         score = score_of[ph_key]
+    #         train_data_of.setdefault(ph, []).append((score, gop))
+    from custom_gop_parser import parse_gop_txt
+    # gop_data = parse_gop_txt(args.gop_scp)
+    gop_data = parse_gop_txt(args.gop_scp, phone_int2sym)
+    for key, gops in gop_data.items():
+        gop_labels = [phone_int2sym[ph].split('_')[0] for ph, _ in gops]
+        human_labels = [phone_of[f'{key}.{i}'] for i in range(len(gops)) if f'{key}.{i}' in phone_of]
+
+        alignment = align_sequences(gop_labels, human_labels)
+        print(f"\nUtterance: {key}")
+        print("GOP phones:   ", gop_labels)
+        print("Human phones: ", human_labels)
+        print("Alignment:")
+        for gop_idx, human_idx in alignment:
+            g = gop_labels[gop_idx] if gop_idx is not None else "-"
+            h = human_labels[human_idx] if human_idx is not None else "-"
+            print(f"  {g:<5} <--> {h}")
+        
+        for gop_idx, human_idx in alignment:
+            if gop_idx is None or human_idx is None:
+                continue
+
+            ph, gop_score = gops[gop_idx]
+            ph_key = f'{key}.{human_idx}'
+
             if ph_key not in score_of:
                 print(f'Warning: no human score for {ph_key}')
                 continue
-            if phone_int2sym is not None and phone_int2sym[ph] != phone_of[ph_key]:
-                print(f'Unmatch: {phone_int2sym[ph]} <--> {phone_of[ph_key]} ')
+
+            gop_phone = phone_int2sym[ph].split('_')[0]
+            human_phone = phone_of[ph_key]
+
+            if gop_phone != human_phone:
+                print(f'Unmatch: {gop_phone} <--> {human_phone}')
                 continue
+
             score = score_of[ph_key]
-            train_data_of.setdefault(ph, []).append((score, gop))
+            train_data_of.setdefault(ph, []).append((score, gop_score))
+
 
     # Train polynomial regression
     with ProcessPoolExecutor(args.nj) as ex:

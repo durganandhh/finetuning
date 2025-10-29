@@ -91,4 +91,8 @@ venv/
 /src/**/CMakeLists.txt
 /build*
 libreespeech2/
-egs/gop_speechocean762/s5/WAVE/
+/egs/gop_speechocean762/s5/WAVE/
+/egs/gop_speechocean762/s5/tune/nnet3_cleaned/ivectors_speechocean762_dev/
+/egs/gop_speechocean762/s5/tune/nnet3_cleaned/ivectors_speechocean762_train/
+/egs/gop_speechocean762/s5/tune/align_lats_speechocean762/
+/egs/gop_speechocean762/s5/tune/chain_finetune/tdnn_1d_sp_adapt/egs/
