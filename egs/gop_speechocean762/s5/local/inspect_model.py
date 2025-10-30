@@ -16,12 +16,12 @@ try:
 except:
     phone_int2sym = {}
 
-# Print model summary
+
 for ph, (coef, intercept) in model_of.items():
     label = phone_int2sym.get(ph, str(ph))
     print(f"{label}: Coef={coef.flatten()}, Intercept={intercept.flatten()}")
 
-# Optional: Visualize one phone's regression curve 
+
 selected_phone = 'AH'
 ph_id = next((ph for ph in model_of if phone_int2sym.get(ph, str(ph)) == selected_phone), None)
 

@@ -4,7 +4,6 @@
 # This script trains a simple polynomial regression model to convert GOP into
 # human expert scores.
 
-
 import sys
 import argparse
 import pickle
@@ -54,7 +53,7 @@ def train_model_for_phone(label_feat_pairs):
     labels, gops = list(zip(*label_feat_pairs))
     labels = np.array(labels).reshape(-1, 1)
     gops = np.array(gops).reshape(-1, 1)
-    gops = PolynomialFeatures(2).fit_transform(gops)
+    gops = PolynomialFeatures(3).fit_transform(gops)
     gops, labels = balanced_sampling(gops, labels)
     model.fit(gops, labels)
     return model.coef_, model.intercept_
@@ -101,7 +100,7 @@ def main():
         
         for gop_idx, human_idx in alignment:
             if gop_idx is None or human_idx is None:
-                continue
+                continue  # Skip insertions/deletions
 
             ph, gop_score = gops[gop_idx]
             ph_key = f'{key}.{human_idx}'
