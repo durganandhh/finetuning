@@ -39,11 +39,15 @@ def main():
 
     with open(args.output, 'wt') as f:
         for ph in feats_for_phone:
+            # Skip silence or any phone not in model
+            if ph not in model_of:
+                continue
             feats = np.array(feats_for_phone[ph])
             scores = model_of[ph].predict(feats)
             for ph_key, score in zip(idxs_for_phone[ph], list(scores)):
                 score = round_score(score, 1)
                 f.write(f'{ph_key}\t{score:.1f}\t{ph}\n')
+
 
 
 if __name__ == "__main__":

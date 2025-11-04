@@ -97,7 +97,14 @@ def main():
             g = gop_labels[gop_idx] if gop_idx is not None else "-"
             h = human_labels[human_idx] if human_idx is not None else "-"
             print(f"  {g:<5} <--> {h}")
-        
+        for gop_idx, human_idx in alignment:
+            if gop_idx is not None and human_idx is not None:
+                g = gop_labels[gop_idx]
+                h = human_labels[human_idx]
+                if g == h:
+                    print(f"Match: {g} == {h}")
+                else:
+                    print(f"Mismatch: {g} != {h}")
         for gop_idx, human_idx in alignment:
             if gop_idx is None or human_idx is None:
                 continue  # Skip insertions/deletions
